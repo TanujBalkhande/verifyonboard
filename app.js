@@ -6,6 +6,8 @@ require('dotenv/config');
 
 app.use(bodyParser.json());
 
+const port = process.env.PORT || 3000
+
 //Import Routes
 const aadharRoute = require('./routes/aadhars');
 app.use('/aadhars', aadharRoute);
@@ -30,4 +32,4 @@ mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true },() =>
     console.log('connected to DB!')
 );
 
-app.listen(3000);
+app.listen(port, () => console.log('Listening on port ${port}'))
